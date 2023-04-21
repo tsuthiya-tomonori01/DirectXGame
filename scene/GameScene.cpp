@@ -5,7 +5,12 @@
 
 GameScene::GameScene() {}
 
-GameScene::~GameScene() {}
+GameScene::~GameScene() {
+
+	delete spriteBG_;
+	delete modelStage_;
+	delete modelPlayer_;
+}
 
 void GameScene::Initialize() {
 
@@ -34,9 +39,26 @@ void GameScene::Initialize() {
 	    worldTransformStage_.translation_);
 
 	worldTransformStage_.TransferMatrix();
+
+	textureHandlePlayer_ = TextureManager::Load("player.png");
+	modelPlayer_ = Model::Create();
+	worldTransformPlayer_.scale_ = {0.5f, 0.5f, 0.5f};
+	worldTransformPlayer_.Initialize();
+
 }
 
-void GameScene::Update() {}
+void GameScene::Update() { 
+	PlayerUpdate();
+}
+
+void GameScene::PlayerUpdate() {
+	worldTransformPlayer_.matWorld_ = MakeAffineMatrix(
+	    worldTransformPlayer_.scale_, worldTransformPlayer_.rotation_,
+	    worldTransformPlayer_.translation_);
+	worldTransformPlayer_.TransferMatrix();
+
+}
+
 
 void GameScene::Draw() {
 
@@ -68,6 +90,8 @@ void GameScene::Draw() {
 	/// </summary>
 	/// 
 	modelStage_->Draw(worldTransformStage_, viewProjection_, textureHandleStage_);
+	modelPlayer_->Draw(worldTransformPlayer_, viewProjection_, textureHandlePlayer_);
+	
 	/// 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();

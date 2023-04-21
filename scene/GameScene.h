@@ -23,6 +23,11 @@ class GameScene {
 	Model* modelStage_ = nullptr;
 	WorldTransform worldTransformStage_;
 
+	uint32_t textureHandlePlayer_ = 0;
+	Model* modelPlayer_ = nullptr;
+	WorldTransform worldTransformPlayer_;
+
+
 public: // メンバ関数
 	/// <summary>
 	/// コンストクラタ
@@ -48,6 +53,8 @@ public: // メンバ関数
 	/// 描画
 	/// </summary>
 	void Draw();
+
+	void PlayerUpdate();
 
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;
