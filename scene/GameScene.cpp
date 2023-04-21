@@ -50,6 +50,8 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに背景スプライトの描画処理を追加できる
 	/// </summary>
+	/// 
+	spriteBG_->Draw();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();
@@ -65,6 +67,7 @@ void GameScene::Draw() {
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
 	/// 
+	modelStage_->Draw(worldTransformStage_, viewProjection_, textureHandleStage_);
 	/// 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();
