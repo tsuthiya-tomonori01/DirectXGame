@@ -14,15 +14,6 @@
 /// </summary>
 class GameScene {
 
-	ViewProjection viewProjection_;
-
-	uint32_t textureHandleBG_ = 0;
-	Sprite* spriteBG_ = nullptr;
-
-	uint32_t textureHandleStage_ = 0;
-	Model* modelStage_ = nullptr;
-	WorldTransform worldTransformStage_;
-
 public: // メンバ関数
 	/// <summary>
 	/// コンストクラタ
