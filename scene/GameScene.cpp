@@ -1,7 +1,6 @@
 #include "GameScene.h"
 #include "TextureManager.h"
 #include <cassert>
-#include "../../../Users/K022G0017/Downloads/MathUtilityForText/MathUtilityForText/MathUtilityForText.h"
 
 GameScene::GameScene() {}
 
@@ -28,12 +27,6 @@ void GameScene::Initialize() {
 
 	worldTransformStage_.translation_ = {0, -1.5f, 0};
 	worldTransformStage_.scale_ = {4.5f, 1, 40};
-
-	worldTransformStage_.matWorld_ = MakeAffineMatrix(
-	    worldTransformStage_.scale_, worldTransformStage_.rotation_,
-	    worldTransformStage_.translation_);
-
-	worldTransformStage_.TransferMatrix();
 
 }
 
