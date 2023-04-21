@@ -27,7 +27,6 @@ class GameScene {
 	Model* modelPlayer_ = nullptr;
 	WorldTransform worldTransformPlayer_;
 
-
 public: // メンバ関数
 	/// <summary>
 	/// コンストクラタ

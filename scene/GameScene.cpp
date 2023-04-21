@@ -43,7 +43,6 @@ void GameScene::Initialize() {
 	modelPlayer_ = Model::Create();
 	worldTransformPlayer_.scale_ = {0.5f, 0.5f, 0.5f};
 	worldTransformPlayer_.Initialize();
-
 }
 
 void GameScene::Update() { 
@@ -56,13 +55,18 @@ void GameScene::PlayerUpdate() {
 	{
 		worldTransformPlayer_.translation_.x += 0.1f;
 	}
+	if (worldTransformPlayer_.translation_.x >= 4) 
+	{
+		worldTransformPlayer_.translation_.x = 4;
+	}
 
 	if (input_->PushKey(DIK_LEFT))
 	{
 		worldTransformPlayer_.translation_.x -= 0.1f;
 	}
-
-
+	if (worldTransformPlayer_.translation_.x < -4) {
+		worldTransformPlayer_.translation_.x = -4;
+	}
 
 	worldTransformPlayer_.matWorld_ = MakeAffineMatrix(
 	    worldTransformPlayer_.scale_, worldTransformPlayer_.rotation_,
