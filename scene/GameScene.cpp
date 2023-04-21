@@ -37,7 +37,6 @@ void GameScene::Initialize() {
 	worldTransformStage_.matWorld_ = MakeAffineMatrix(
 	    worldTransformStage_.scale_, worldTransformStage_.rotation_,
 	    worldTransformStage_.translation_);
-
 	worldTransformStage_.TransferMatrix();
 
 	textureHandlePlayer_ = TextureManager::Load("player.png");
@@ -52,11 +51,23 @@ void GameScene::Update() {
 }
 
 void GameScene::PlayerUpdate() {
+
+	if (input_->PushKey(DIK_RIGHT)) 
+	{
+		worldTransformPlayer_.translation_.x += 0.1f;
+	}
+
+	if (input_->PushKey(DIK_LEFT))
+	{
+		worldTransformPlayer_.translation_.x -= 0.1f;
+	}
+
+
+
 	worldTransformPlayer_.matWorld_ = MakeAffineMatrix(
 	    worldTransformPlayer_.scale_, worldTransformPlayer_.rotation_,
 	    worldTransformPlayer_.translation_);
 	worldTransformPlayer_.TransferMatrix();
-
 }
 
 
