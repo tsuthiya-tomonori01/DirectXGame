@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "TextureManager.h"
 #include <cassert>
+#include "MathUtilityForText.h"
 
 GameScene::GameScene() {}
 
@@ -11,6 +12,28 @@ void GameScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
+
+	textureHandleBG_ = TextureManager::Load("bg.jpg");
+	spriteBG_ = Sprite::Create(textureHandleBG_, {0, 0});
+
+	viewProjection_.Initialize();
+
+	textureHandleStage_ = TextureManager::Load("stage.jpg");
+	modelStage_ = Model::Create();
+	worldTransformStage_.Initialize();
+
+	viewProjection_.translation_.y = 1;
+	viewProjection_.translation_.z = -6;
+	viewProjection_.Initialize();
+
+	worldTransformStage_.translation_ = {0, -1.5f, 0};
+	worldTransformStage_.scale_ = {4.5f, 1, 40};
+
+	worldTransformStage_.matWorld_ = MakeAffineMatrix(
+	    worldTransformStage_.scale_, worldTransformStage_.rotation_,
+	    worldTransformStage_.translation_);
+
+	worldTransformStage_.TransferMatrix();
 }
 
 void GameScene::Update() {}
